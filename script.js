@@ -1,4 +1,4 @@
-const myLibrary = [];
+let  myLibrary = [];
 function Book(title, author, pages, Completed) {
   // the constructor...
   this.title = title;
@@ -11,18 +11,11 @@ function Book(title, author, pages, Completed) {
   };
 }
 
-myLibrary.push(new Book("The Hobbit", "J.R.R. Tolkien", 310, "Completed"));
-
 function addBookToLibrary(BookTitle, BookAuthor, BookPages, BookCompleted) {
   // take params, create a book then store it in the array
   let newBook = new Book(BookTitle, BookAuthor, BookPages, BookCompleted);
   myLibrary.push(newBook);
 }
-addBookToLibrary("hghgh", "gjgjg", 789, "not yet ");
-// addBookToLibrary("hghgh", "gjgjg", 789, "not yet ");
-// addBookToLibrary("hghgh", "gjgjg", 789, "not yet ");
-
-// addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, "Completed");
 
 //function that loops through the array and displays each book on the page
 
@@ -38,21 +31,18 @@ function displayBooks() {
     card.className = "Card";
     card.innerHTML = `
       <h3 style=" text-align: center">${book.title}</h3>
-
-      
-      
       <p><b>Author:</b> ${book.author}</p>
-
-
-
       <p><b>Pages:</b> ${book.pages}</p>
-
-
       <p><b>Status:</b> ${book.Completed}</p>
-      
-      
-      
+      <button class="Remove">Remove</button>
     `;
+  card.dataset.id=book.id;
+
+    let removeButton = card.querySelector(".Remove");
+    removeButton.addEventListener("click", () => {
+      RemoveBook(book.id,card);
+
+    });
   });
 }
 
@@ -73,7 +63,7 @@ CloseButton.addEventListener("click", () => dialog.close());
 
 let SubmitButton = document.querySelector(".Submit");
 SubmitButton.addEventListener("click", (event) => {
-  event.preventDefault(); 
+  event.preventDefault();
   let formElement = document.querySelector("form").elements;
   addBookToLibrary(
     formElement.name.value,
@@ -84,3 +74,11 @@ SubmitButton.addEventListener("click", (event) => {
   dialog.close();
   displayBooks();
 });
+
+//function to remove book
+function RemoveBook(id,card) {
+  myLibrary = myLibrary.filter((book) => book.id !== id);
+  card.remove();
+  
+}
+
