@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h3 style="text-align: center"></h3>
+    <div class="container"></div>
+    <!-- <button> REMOVE BOOK </button> -->
+    <dialog>
+      <form method="dialog">
+        <div>
+          <label for="name">Book Name:</label>
+          <input type="text" name="BookName" id="name"  required/>
+        </div>
+
+        <div>
+          <label for="author">Author's Name:</label>
+          <input type="text" name="BookAuthor" id="author" required />
+        </div>
+
+        <div>
+          <label for="pages">Number of Pages:</label>
+          <input type="text" name="NumberOfPages" id="pages" required/>
+        </div>
+
+        <div>
+          <label for="status">Status of Completion:</label>
+          <input type="text" name="StatusOfCompletion" id="status" required/>
+        </div>
+
+        <button class="Cancel"> Cancel</button>
+        <button class="Submit"> Submit</button>
+      </form>
+    </dialog>
+
+    <button class="Show">Show</button>
+        <button class="NEW">NEW BOOK</button>
+
+
+    <script src="script.js"></script>
+  </body>
+</html>

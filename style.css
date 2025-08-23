@@ -1,0 +1,25 @@
+/* *{
+    box-sizing: border-box;
+
+} */
+.container{
+    display: flex;
+    gap:50px;
+        flex-wrap: wrap;
+
+}
+
+.Card{
+    display: flex;
+    flex-direction: column;
+    /* flex: 1; */
+    flex-wrap: wrap;
+    border: 5px solid black;
+    border-radius: 20px;
+    width: 200px;
+    height: 280px;
+    padding: 20px;
+    background-color: lightyellow;
+
+
+}
