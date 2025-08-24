@@ -29,12 +29,14 @@ function displayBooks() {
     const card = document.createElement("div");
     container.appendChild(card);
     card.className = "Card";
+    card.style.backgroundColor=pickRandomColour();
     card.innerHTML = `
+          <button class="Remove">x</button>
+
       <h3 style=" text-align: center">${book.title}</h3>
       <p><b>Author:</b> ${book.author}</p>
       <p><b>Pages:</b> ${book.pages}</p>
       <p><b>Status:</b> ${book.Completed}</p>
-      <button class="Remove">Remove</button>
     `;
   card.dataset.id=book.id;
 
@@ -46,10 +48,10 @@ function displayBooks() {
   });
 }
 
-let AddBook = document.querySelector(".Show");
-AddBook.onclick = () => {
-  displayBooks();
-};
+// let AddBook = document.querySelector(".Show");
+// AddBook.onclick = () => {
+//   displayBooks();
+// };
 
 //function to open the dialog box
 let AddButton = document.querySelector(".NEW");
@@ -80,5 +82,24 @@ function RemoveBook(id,card) {
   myLibrary = myLibrary.filter((book) => book.id !== id);
   card.remove();
   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//function to return random color
+function pickRandomColour(){
+    let h= Math.floor(Math.random() * 360);
+    let s = Math.floor(Math.random() * 50)+50;
+    let l = Math.floor(Math.random() * 50)+50;
+    return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
