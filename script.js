@@ -25,28 +25,44 @@ function displayBooks() {
   container.innerHTML = "";
 
   myLibrary.forEach((book) => {
-    // console.log(book.info()); // prints info of each book
     const card = document.createElement("div");
     container.appendChild(card);
     card.className = "Card";
-    card.style.backgroundColor=pickRandomColour();
-    card.innerHTML = `
-          <button class="Remove">x</button>
+    card.style.backgroundColor = pickRandomColour();
+    card.dataset.id = book.id;
 
-      <h3 style=" text-align: center">${book.title}</h3>
+    card.innerHTML = `
+      <button class="Remove">x</button>
+      <h3 style="text-align: center">${book.title}</h3>
       <p><b>Author:</b> ${book.author}</p>
       <p><b>Pages:</b> ${book.pages}</p>
-      <p><b>Status:</b> ${book.Completed}</p>
+      <p><b>Status:</b></p>
+      <div class="form-row">
+        <div class="toggle-container">
+          <span class="toggle-label-left">No</span>
+          <label class="switch">
+            <input type="checkbox" name="switch" />
+            <span class="slider"></span>
+          </label>
+          <span class="toggle-label-right">Yes</span>
+        </div>
+      </div>
     `;
-  card.dataset.id=book.id;
+
+    let toggleButton = card.querySelector("input[type='checkbox']");
+    toggleButton.checked = book.Completed;
+
+    toggleButton.addEventListener("change", () => {
+      book.Completed = toggleButton.checked;
+    });
 
     let removeButton = card.querySelector(".Remove");
     removeButton.addEventListener("click", () => {
-      RemoveBook(book.id,card);
-
+      RemoveBook(book.id, card);
     });
   });
 }
+
 
 // let AddBook = document.querySelector(".Show");
 // AddBook.onclick = () => {
@@ -71,7 +87,7 @@ SubmitButton.addEventListener("click", (event) => {
     formElement.name.value,
     formElement.author.value,
     formElement.pages.value,
-    formElement.status.value
+    formElement.switch.checked,
   );
   dialog.close();
   displayBooks();
@@ -81,6 +97,7 @@ SubmitButton.addEventListener("click", (event) => {
 function RemoveBook(id,card) {
   myLibrary = myLibrary.filter((book) => book.id !== id);
   card.remove();
+  
   
 }
 

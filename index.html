@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-        <h1>The Odin Library</h1>
+    <h1>The Odin Library</h1>
 
     <div class="container"></div>
     <!-- <button> REMOVE BOOK </button> -->
@@ -28,18 +28,25 @@
           <input type="text" name="NumberOfPages" id="pages" required />
         </div>
 
-        <div>
-          <label for="status">Status of Completion:</label>
-          <input type="text" name="StatusOfCompletion" id="status" required />
-        </div>
+<div class="form-row">
+  <label></label>
+  <div class="toggle-container">
+    <span class="toggle-label-left">No</span>
+    <label class="switch">
+      <input type="checkbox" name="switch" />
+      <span class="slider"></span>
+    </label>
+    <span class="toggle-label-right">Yes</span>
+  </div>
+</div>
 
+      
         <button class="Cancel">Cancel</button>
         <button class="Submit">Submit</button>
       </form>
     </dialog>
 
-<footer>    <button class="NEW">NEW BOOK</button>
-</footer>
+    <footer><button class="NEW">NEW BOOK</button></footer>
 
     <script src="script.js"></script>
   </body>
